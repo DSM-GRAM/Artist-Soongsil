@@ -1,7 +1,7 @@
 from db.mongo import *
 
 
-class User(Document):
+class UserModel(Document):
     phone = StringField(primary_key=True)
     name = StringField(required=True)
     age = IntField(required=True)
