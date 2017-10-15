@@ -22,12 +22,13 @@ class Category(Resource):
         category.update(chosen=category.chosen + 1)
 
         image_names = category.image_names
-        chosen_image = image_names[random.randrange(0, len(image_names))]
+        chosen_image_name = image_names[random.randrange(0, len(image_names))]
         # Chosen counting, collect image
 
         shower = DeviceModel.objects(status=0).first()
-        fcm.notify_single_device(registration_id=shower.registration_id, message_title={'type': 0, 'image': chosen_image})
+        fcm.notify_single_device(registration_id=shower.registration_id, message_title={'type': 0, 'image_name': chosen_image_name})
         shower.update(status=1)
         # Push to waiting shower, renew status : 'Showing sample'
 
-        return '', 201
+        return {'shower_id': shower.registration_id, 'image_name': chosen_image_name}, 201
+        # Return shower id to chaining
