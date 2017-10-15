@@ -16,6 +16,7 @@ class Draw(Resource):
 
 class Score(Resource):
     def post(self):
+        # Need more implement
         user_image = request.files['image']
         user_image_name = '{0}.png'.format(uuid.uuid4())
         user_image.save(user_image_name)
