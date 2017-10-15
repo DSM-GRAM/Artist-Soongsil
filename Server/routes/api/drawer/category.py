@@ -23,7 +23,7 @@ class Category(Resource):
 
         image_names = category.image_names
         chosen_image_name = image_names[random.randrange(0, len(image_names))]
-        # Chosen counting, collect image
+        # Chosen counting, collect image name
 
         shower = DeviceModel.objects(status=0).first()
         fcm.notify_single_device(registration_id=shower.registration_id, message_title={'type': 0, 'image_name': chosen_image_name})
