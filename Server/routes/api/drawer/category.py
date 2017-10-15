@@ -1,6 +1,5 @@
 import random
 
-from flask import send_from_directory
 from flask_restful_swagger_2 import Resource, request, swagger
 
 from db.models.category import CategoryModel
@@ -21,6 +20,7 @@ class Category(Resource):
 
         category = CategoryModel.objects(category_code=code).first()
         category.update(chosen=category.chosen + 1)
+
         image_names = category.image_names
         chosen_image = image_names[random.randrange(0, len(image_names))]
         # Chosen counting, collect image
@@ -28,6 +28,6 @@ class Category(Resource):
         shower = DeviceModel.objects(status=0).first()
         fcm.notify_single_device(registration_id=shower.registration_id, message_title={'type': 0, 'image': chosen_image})
         shower.update(status=1)
-        # Push to waiting shower, renew status
+        # Push to waiting shower, renew status : 'Showing sample'
 
         return '', 201
