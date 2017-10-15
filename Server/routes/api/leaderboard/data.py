@@ -4,7 +4,7 @@ from flask_restful_swagger_2 import Resource, request, swagger
 from db.models.user import UserModel
 
 
-class Information(Resource):
+class Ranking(Resource):
     def get(self):
         return [{
             'name': user.name,
