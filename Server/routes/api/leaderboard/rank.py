@@ -6,12 +6,16 @@ from db.models.user import UserModel
 
 class Ranking(Resource):
     def get(self):
-        return [{
+        rank = [{
             'name': user.name,
             'phone': user.phone,
             'affiliation': user.affiliation,
             'score': user.score
-        } for user in UserModel.objects], 200
+        } for user in UserModel.objects]
+
+        rank = sorted(rank, key=lambda k: k['score'], reverse=True)
+
+        return rank, 200
 
 
 class UserDrewImage(Resource):
