@@ -1,5 +1,5 @@
 RANKING = {
-    'tags': ['리더보드'],
+    'tags': ['LeaderBoard'],
     'description': '랭킹 조회',
     'responses': {
         '200': {
@@ -25,7 +25,7 @@ RANKING = {
 }
 
 DREW_IMAGE = {
-    'tags': ['리더보드'],
+    'tags': ['LeaderBoard'],
     'description': '사용자 이미지 조회',
     'parameters': [
         {

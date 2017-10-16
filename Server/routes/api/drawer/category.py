@@ -29,9 +29,10 @@ class Category(Resource):
         # Chosen counting, collect image name
 
         shower = DeviceModel.objects(status=0).first()
-        fcm.notify_single_device(registration_id=shower.registration_id, message_title={'type': 0, 'image_name': chosen_image_name})
-        shower.update(status=1)
-        # Push to waiting shower, renew status : 'Showing sample'
+        if shower:
+            fcm.notify_single_device(registration_id=shower.registration_id, message_title={'type': 0, 'image_name': chosen_image_name})
+            shower.update(status=1)
+            # Push to waiting shower, renew status : 'Showing sample'
 
-        return {'shower_id': shower.registration_id, 'image_name': chosen_image_name}, 201
+        return {'shower_id': shower.registration_id if shower else None, 'image_name': chosen_image_name}, 201
         # Return shower id to chaining
