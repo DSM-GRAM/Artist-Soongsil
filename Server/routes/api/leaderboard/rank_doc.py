@@ -25,5 +25,19 @@ RANKING = {
 }
 
 DREW_IMAGE = {
-    'tags': ['리더보드']
+    'tags': ['리더보드'],
+    'description': '사용자 이미지 조회',
+    'parameters': [
+        {
+            'name': 'phone',
+            'description': '이미지를 조회할 핸드폰 번호',
+            'in': 'query',
+            'type': 'str'
+        }
+    ],
+    'responses': {
+        '200': {
+            'description': '이미지 조회 성공. 이미지 반환'
+        }
+    }
 }
