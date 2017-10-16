@@ -4,16 +4,18 @@ from flask_restful_swagger_2 import Resource, request, swagger
 
 from db.models.category import CategoryModel
 from db.models.device import DeviceModel
+from routes.api.drawer import category_doc
 from support.fcm import fcm
 
 
 class Category(Resource):
+    @swagger.doc(category_doc.CATEGORY)
     def get(self):
         return [{
             'category_code': category.category_code,
             'category_name': category.category_name,
             'chosen': category.chosen
-        } for category in CategoryModel.objects]
+        } for category in CategoryModel.objects], 200
 
     def post(self):
         code = request.form.get('code', type=int)
