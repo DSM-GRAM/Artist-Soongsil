@@ -17,6 +17,7 @@ class Category(Resource):
             'chosen': category.chosen
         } for category in CategoryModel.objects], 200
 
+    @swagger.doc(category_doc.CATEGORY_SELECT)
     def post(self):
         code = request.form.get('code', type=int)
 
