@@ -2,10 +2,12 @@ import uuid
 
 from flask_restful_swagger_2 import Resource, request, swagger
 
+from routes.api.drawer import draw_doc
 from support.fcm import fcm
 
 
 class Draw(Resource):
+    @swagger.doc(draw_doc.DRAW)
     def post(self):
         shower_id = request.form.get('shower_id')
 
@@ -15,6 +17,7 @@ class Draw(Resource):
 
 
 class Score(Resource):
+    @swagger.doc(draw_doc.SCORE)
     def post(self):
         # Need more implement
         user_image = request.files['image']
