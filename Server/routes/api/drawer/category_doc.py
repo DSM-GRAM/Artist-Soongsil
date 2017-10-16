@@ -35,7 +35,7 @@ CATEGORY_SELECT = {
     ],
     'responses': {
         '201': {
-            'description': '카테고리 선택 성공. 할당된 Shower의 id와 점수 책정을 위한 이미지 이름 반환',
+            'description': '카테고리 선택 성공. 할당되어 푸쉬가 전송된 Shower의 id와 점수 책정을 위한 이미지 이름 반환',
             'examples': {
                 'application/json': {
                     'shower_id': 'a1zdp584a8tod94jla011v1c5',
